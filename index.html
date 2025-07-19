@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ColorSnap - Поймай любой цвет одним кликом 🎨</title>
+	<meta name="description"
+		content="Chrome расширение для захвата цветов с веб-страниц. Получай HEX, RGB, HSL коды мгновенно!">
+	<meta name="keywords" content="color picker, chrome extension, hex, rgb, hsl, цвета, палитра, дизайн">
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="ColorSnap - Поймай любой цвет одним кликом">
+	<meta property="og:description" content="Chrome расширение для захвата цветов с веб-страниц">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://colorsnap.site">
+
+	<link rel="stylesheet" href="styles.css">
+	<link rel="icon" type="image/png" sizes="32x32" href="../extension/assets/icon48.png">
+</head>
+
+<body>
+	<!-- Навигация -->
+	<nav class="nav">
+		<div class="nav__container">
+			<div class="nav__brand">
+				<img src="../extension/assets/icon48.png" alt="ColorSnap" class="nav__logo">
+				<span class="nav__title">ColorSnap</span>
+			</div>
+			<div class="nav__actions">
+				<a href="#how-it-works" class="nav__link">
+					<span data-i18n="how_it_works">Как работает</span>
+				</a>
+				<button class="language-toggle" id="languageToggle">
+					<span class="language-toggle__text">EN</span>
+				</button>
+				<a href="#download" class="btn btn--nav">
+					<span data-i18n="download">Скачать</span>
+				</a>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Герой секция -->
+	<section class="hero">
+		<div class="hero__container">
+			<div class="hero__content">
+				<h1 class="hero__title">
+					<span data-i18n="hero_title">Поймай любой цвет</span>
+					<span class="hero__title-accent" data-i18n="hero_title_accent">одним кликом</span>
+				</h1>
+				<p class="hero__subtitle" data-i18n="hero_subtitle">
+					Chrome расширение для мгновенного захвата цветов с любой веб-страницы.
+					Получай HEX, RGB, HSL коды за секунду!
+				</p>
+				<div class="hero__actions">
+					<a href="#download" class="btn btn--primary btn--large">
+						<span data-i18n="install_free">Установить бесплатно</span>
+					</a>
+					<button class="btn btn--secondary btn--large" id="demoPickerBtn">
+						<span data-i18n="try_demo">Попробовать демо</span>
+					</button>
+				</div>
+			</div>
+			<div class="hero__demo">
+				<div class="demo-card">
+					<div class="demo-card__header">
+						<div class="demo-card__controls">
+							<div class="demo-control"></div>
+							<div class="demo-control"></div>
+							<div class="demo-control"></div>
+						</div>
+						<span class="demo-card__title">ColorSnap</span>
+					</div>
+					<div class="demo-card__content">
+						<div class="demo-section">
+							<button class="demo-btn" id="demoBtnCard">
+								<span data-i18n="pick_color">Поймать цвет</span>
+							</button>
+						</div>
+						<div class="demo-colors">
+							<div class="demo-color">
+								<div class="demo-color__swatch" style="background: #2196F3;"></div>
+								<div class="demo-color__info">
+									<div class="demo-color__format">HEX</div>
+									<div class="demo-color__value">#2196F3</div>
+								</div>
+							</div>
+							<div class="demo-color">
+								<div class="demo-color__swatch" style="background: #FF6B35;"></div>
+								<div class="demo-color__info">
+									<div class="demo-color__format">RGB</div>
+									<div class="demo-color__value">rgb(255, 107, 53)</div>
+								</div>
+							</div>
+							<div class="demo-color">
+								<div class="demo-color__swatch" style="background: #4CAF50;"></div>
+								<div class="demo-color__info">
+									<div class="demo-color__format">HSL</div>
+									<div class="demo-color__value">hsl(122, 39%, 49%)</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Возможности -->
+	<section class="features" id="features">
+		<div class="features__container">
+			<h2 class="section-title" data-i18n="features_title">Возможности</h2>
+			<div class="features__grid">
+				<div class="feature-card">
+					<div class="feature-card__icon">
+						🎯
+					</div>
+					<h3 class="feature-card__title" data-i18n="feature_instant_title">Мгновенный захват</h3>
+					<p class="feature-card__description" data-i18n="feature_instant_desc">
+						Один клик — и цвет уже в буфере обмена. Никаких сложных инструментов и настроек.
+					</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-card__icon">
+						🌈
+					</div>
+					<h3 class="feature-card__title" data-i18n="feature_formats_title">Все форматы</h3>
+					<p class="feature-card__description" data-i18n="feature_formats_desc">
+						HEX, RGB, HSL, RGBA, HSLA — получай цвет в любом нужном формате сразу.
+					</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-card__icon">
+						📝
+					</div>
+					<h3 class="feature-card__title" data-i18n="feature_history_title">История цветов</h3>
+					<p class="feature-card__description" data-i18n="feature_history_desc">
+						Автоматически сохраняй последние цвета. Никогда не потеряешь нужный оттенок.
+					</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-card__icon">
+						⌨️
+					</div>
+					<h3 class="feature-card__title" data-i18n="feature_hotkeys_title">Горячие клавиши</h3>
+					<p class="feature-card__description" data-i18n="feature_hotkeys_desc">
+						Ctrl+Shift+X для мгновенного запуска. Работай ещё быстрее!
+					</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-card__icon">
+						🌍
+					</div>
+					<h3 class="feature-card__title" data-i18n="feature_languages_title">Два языка</h3>
+					<p class="feature-card__description" data-i18n="feature_languages_desc">
+						Полная поддержка русского и английского языков в интерфейсе.
+					</p>
+				</div>
+				<div class="feature-card">
+					<div class="feature-card__icon">
+						⚡
+					</div>
+					<h3 class="feature-card__title" data-i18n="feature_lightweight_title">Легковесность</h3>
+					<p class="feature-card__description" data-i18n="feature_lightweight_desc">
+						Минимальное потребление ресурсов. Работает быстро и не тормозит браузер.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Как это работает -->
+	<section class="how-it-works" id="how-it-works">
+		<div class="how-it-works__container">
+			<h2 class="section-title" data-i18n="how_it_works_title">Как это работает</h2>
+			<div class="steps">
+				<div class="step">
+					<div class="step__number">1</div>
+					<div class="step__content">
+						<h3 class="step__title" data-i18n="step1_title">Установи расширение</h3>
+						<p class="step__description" data-i18n="step1_desc">
+							Скачай ColorSnap из Chrome Web Store за несколько секунд.
+						</p>
+					</div>
+				</div>
+				<div class="step">
+					<div class="step__number">2</div>
+					<div class="step__content">
+						<h3 class="step__title" data-i18n="step2_title">Кликни на иконку</h3>
+						<p class="step__description" data-i18n="step2_desc">
+							Открой расширение и нажми "Поймать цвет" или используй Ctrl+Shift+X.
+						</p>
+					</div>
+				</div>
+				<div class="step">
+					<div class="step__number">3</div>
+					<div class="step__content">
+						<h3 class="step__title" data-i18n="step3_title">Выбери цвет</h3>
+						<p class="step__description" data-i18n="step3_desc">
+							Кликни по любому элементу на странице — цвет мгновенно скопируется!
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Скачивание -->
+	<section class="download" id="download">
+		<div class="download__container">
+			<div class="download__content">
+				<h2 class="download__title" data-i18n="download_title">Скачай ColorSnap прямо сейчас</h2>
+				<p class="download__subtitle" data-i18n="download_subtitle">
+					Бесплатно, безопасно и без рекламы. Работает в Chrome, Edge, Brave и других Chromium браузерах.
+				</p>
+				<div class="download__actions">
+					<a href="https://chrome.google.com/webstore" target="_blank"
+						class="btn btn--primary btn--large btn--download">
+						<svg class="btn__icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+							<path
+								d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7 14l5-5 5 5H7z" />
+						</svg>
+						<span data-i18n="download_chrome">Установить из Chrome Web Store</span>
+					</a>
+				</div>
+				<div class="download__info">
+					<div class="download__stat">
+						<span class="download__stat-number">1.0.1</span>
+						<span class="download__stat-label" data-i18n="current_version">Текущая версия</span>
+					</div>
+					<div class="download__stat">
+						<span class="download__stat-number">100%</span>
+						<span class="download__stat-label" data-i18n="free">Бесплатно</span>
+					</div>
+					<div class="download__stat">
+						<span class="download__stat-number">5 ⭐</span>
+						<span class="download__stat-label" data-i18n="rating">Рейтинг</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Футер -->
+	<footer class="footer">
+		<div class="footer__container">
+			<div class="footer__content">
+				<div class="footer__brand">
+					<img src="../extension/assets/icon48.png" alt="ColorSnap" class="footer__logo">
+					<div class="footer__info">
+						<h3 class="footer__title">ColorSnap</h3>
+						<p class="footer__description" data-i18n="footer_description">
+							Лучший инструмент для захвата цветов в Chrome
+						</p>
+					</div>
+				</div>
+				<div class="footer__links">
+					<div class="footer__section">
+						<h4 class="footer__section-title" data-i18n="product">Продукт</h4>
+						<ul class="footer__list">
+							<li><a href="#features" class="footer__link" data-i18n="features">Возможности</a></li>
+							<li><a href="#how-it-works" class="footer__link" data-i18n="how_it_works">Как работает</a>
+							</li>
+							<li><a href="#download" class="footer__link" data-i18n="download">Скачать</a></li>
+						</ul>
+					</div>
+					<div class="footer__section">
+						<h4 class="footer__section-title" data-i18n="support">Поддержка</h4>
+						<ul class="footer__list">
+							<li><a href="https://gist.github.com/kianurivzzz/4df8089a13a8a509f9489754458c5ed8"
+									target="_blank" class="footer__link" data-i18n="privacy_policy">Политика
+									конфиденциальности</a></li>
+							<li><a href="mailto:hello@nkarasyov.ru" class="footer__link"
+									data-i18n="contact">Связаться</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="footer__bottom">
+				<p class="footer__copyright">
+					© 2025 ColorSnap.
+					<span data-i18n="made_with_love">Made with ❤️ for creativity</span>
+					<a href="https://nkarasyov.ru" target="_blank" class="footer__author">by Nikita Karasyov</a>
+				</p>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Скрипты -->
+	<script src="i18n.js"></script>
+	<script src="app.js"></script>
+</body>
+
+</html>
